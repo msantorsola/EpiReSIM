@@ -1,5 +1,8 @@
 classdef Data
-    
+   
+seed = 1
+rng(seed);
+
     properties
         name          % Name of the Data.
         class         % The label for real data
