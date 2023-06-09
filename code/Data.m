@@ -1,7 +1,5 @@
 classdef Data
-   
-seed = 1
-rng(seed);
+
 
     properties
         name          % Name of the Data.
@@ -12,7 +10,8 @@ rng(seed);
         function D = Data(path,snpnum)
             [~, D.name, ~] = fileparts(path);
             fid = load(path);
-            NUM  = round(rand(1,1)*(size(fid.pts,2)-snpnum-1));
+            rng(0);
+	    NUM  = round(rand(1,1)*(size(fid.pts,2)-snpnum-1));
             D.pts = fid.pts(:,NUM:NUM+snpnum-1);
             D.class =zeros(1,size(D.pts,1));
             for i = 1:size(D.pts,1)
@@ -20,7 +19,16 @@ rng(seed);
                 i = i+1;
 %                 D.class = fid.class;  
             end
-        end
+        filename = 'input_snp_indices.txt'; % Specify the filename with the appropriate extension
+	fileID = fopen(filename, 'w');
+
+
+        fprintf(fileID, 'start\tend\n');
+        fprintf(fileID, '%d\t%d\n', NUM, NUM + snpnum - 1);
+
+       fclose(fileID);
+
+	end
     end
 end
 
