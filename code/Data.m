@@ -19,14 +19,11 @@ classdef Data
                 i = i+1;
 %                 D.class = fid.class;  
             end
-        filename = 'input_snp_indices.txt'; % Specify the filename with the appropriate extension
-	fileID = fopen(filename, 'w');
-
-
-        fprintf(fileID, 'start\tend\n');
-        fprintf(fileID, '%d\t%d\n', NUM, NUM + snpnum - 1);
-
-       fclose(fileID);
+            filename = 'input_snp_indices.txt'; % Specify the filename with the appropriate extension
+	    fileID = fopen(filename, 'w');
+            fprintf(fileID, 'start\tend\n');
+            fprintf(fileID, '%d\t%d\n', NUM, NUM + snpnum - 1);
+            fclose(fileID);
 
 	end
     end
