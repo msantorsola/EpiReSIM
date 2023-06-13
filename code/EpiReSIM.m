@@ -64,11 +64,11 @@ pt.loci =site(1,:);
 for k = 1:repeat
     SNP = simulation(d,Control_Num,Case_Num,pt,SNP_num);
     if data_mat
-        filename1 = strcat('results',SNP_name,'_',num2str(k),'.mat');
+        filename1 = strcat('results/',SNP_name,'_',num2str(k),'.mat');
         save(filename1,'SNP');
     end
     if data_txt
-        filename2 = strcat('results',SNP_name,'_',num2str(k),'.txt');
+        filename2 = strcat('results/',SNP_name,'_',num2str(k),'.txt');
         [Row,Col]=size(SNP);
         fid=fopen(filename2,'a');
         for i=1:Row
@@ -81,7 +81,7 @@ for k = 1:repeat
     end
 end
 %% 保存模型信息
-filename=strcat('results',SNP_name,'_',num2str(k),'model.txt');
+filename=strcat('results/',SNP_name,'_',num2str(k),'_model.txt');
 fid=fopen(filename,'w');
 fprintf(fid,'%s', 'order:');
 fprintf(fid,'%d\n', pt.order);
