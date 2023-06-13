@@ -81,7 +81,8 @@ for k = 1:repeat
     end
 end
 %% 保存模型信息
-fid=fopen('log.txt','w');
+fid=strcat(SNP_name,'_',num2str(k),'model.txt');
+%fid=fopen('log.txt','w');
 fprintf(fid,'%s', 'order:');
 fprintf(fid,'%d\n', pt.order);
 fprintf(fid,'\n');
