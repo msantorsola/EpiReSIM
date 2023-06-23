@@ -16,6 +16,8 @@ pt.order= n;
 idx = find(all(a.class(1,:)==2,1));
 % idx = find(all(a.class(1,:)==1,1));
 d = a.pts(idx,:);
+startindex = a.startindex
+endindex = a.endindex
 maf =zeros(1,size(d,2));
 for j = 1:size(d,2)
     Aa = 0;
@@ -115,5 +117,13 @@ fprintf(fid,'\n');
 fprintf(fid,'%s', 'Heritability:');
 fprintf(fid,'%f\n', pt.h);
 fclose(fid);
+filename=strcat('results/',SNP_name,'_',num2str(k),'_input_snp_indices.txt');
+%filename = 'results/input_snp_indices.txt'; % Specify the filename with the appropriate extension
+fileID = fopen(filename, 'w');
+fprintf(fileID, 'start\tend\n');
+%fprintf(fileID, '%d\t%d\n', NUM, NUM + snpnum - 1);
+fprintf(fileID, '%d\t%d\n', startindex, endindex);
+fclose(fileID);
+
 end
 

@@ -5,6 +5,8 @@ classdef Data
         name          % Name of the Data.
         class         % The label for real data
         pts           % List of data.
+	startindex    % Start for subsetting input data
+	endindex      % End for subsetting input data
     end
     methods
         function D = Data(path,snpnum)
@@ -19,11 +21,13 @@ classdef Data
                 i = i+1;
 %                 D.class = fid.class;  
             end
-            filename = 'results/input_snp_indices.txt'; % Specify the filename with the appropriate extension
-	    fileID = fopen(filename, 'w');
-            fprintf(fileID, 'start\tend\n');
-            fprintf(fileID, '%d\t%d\n', NUM, NUM + snpnum - 1);
-            fclose(fileID);
+	    D.startindex = NUM
+	    D.endindex = NUM + snpnum - 1
+            %filename = 'results/input_snp_indices.txt'; % Specify the filename with the appropriate extension
+	    %fileID = fopen(filename, 'w');
+            %fprintf(fileID, 'start\tend\n');
+            %fprintf(fileID, '%d\t%d\n', NUM, NUM + snpnum - 1);
+            %fclose(fileID);
 
 	end
     end
